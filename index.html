@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Poll System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗳️ Online Poll System</h1>
+            <p>สร้างและจัดการแบบสำรวจออนไลน์แบบ Real-time</p>
+            <div class="info-notice">
+                ⚠️ <strong>หมายเหตุ:</strong> ข้อมูลจะเก็บใน Memory เท่านั้น และจะหายไปเมื่อ Refresh หน้า<br>
+                💡 <strong>แนะนำ:</strong> ใช้ปุ่ม Export เพื่อบันทึกข้อมูล และ Import เพื่อโหลดข้อมูลกลับมา
+            </div>
+        </div>
+
+        <div class="nav-buttons">
+            <button class="btn btn-primary" onclick="showView('polls')">📊 ดู Polls</button>
+            <button class="btn btn-secondary" onclick="showView('admin')">⚙️ Admin</button>
+            <button class="btn btn-primary" onclick="openCreateModal()">➕ สร้าง Poll ใหม่</button>
+            <button class="btn btn-warning" onclick="exportData()">💾 Export ข้อมูล</button>
+            <button class="btn btn-secondary" onclick="importData()">📁 Import ข้อมูล</button>
+        </div>
+
+        <div class="main-content">
+            <!-- Polls View -->
+            <div id="polls-view" class="view active">
+                <h2>📋 รายการ Polls ทั้งหมด</h2>
+                <div id="polls-container" class="poll-grid"></div>
+            </div>
+
+            <!-- Poll Detail View -->
+            <div id="poll-detail-view" class="view">
+                <div class="poll-detail-content">
+                    <button class="btn btn-secondary" onclick="showView('polls')" style="margin-bottom: 20px;">⬅️ กลับไปรายการ</button>
+                    <div id="poll-detail-content"></div>
+                </div>
+            </div>
+
+            <!-- Admin View -->
+            <div id="admin-view" class="view">
+                <h2>⚙️ จัดการ Polls</h2>
+                <div class="admin-section">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ชื่อ Poll</th>
+                                <th>จำนวน Choices</th>
+                                <th>Total Votes</th>
+                                <th>สร้างเมื่อ</th>
+                                <th>การจัดการ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create/Edit Poll Modal -->
+    <div id="poll-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePollModal()">&times;</span>
+            <h2 id="modal-title">สร้าง Poll ใหม่</h2>
+            <form id="poll-form" onsubmit="savePoll(event)">
+                <div class="form-group">
+                    <label for="poll-title">ชื่อ Poll:</label>
+                    <input type="text" id="poll-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="poll-description">คำอธิบาย:</label>
+                    <textarea id="poll-description" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>ตัวเลือก (Choices):</label>
+                    <div class="choices-container">
+                        <div id="choices-list"></div>
+                        <button type="button" class="btn btn-secondary btn-small" onclick="addChoice()">➕ เพิ่มตัวเลือก</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">💾 บันทึก</button>
+                    <button type="button" class="btn btn-secondary" onclick="closePollModal()">❌ ยกเลิก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
