@@ -1,3 +1,3 @@
 # Vibe Poll Vote
 
-Participate in our poll and make your voice heard! Cast your vote to share your opinion on the topic that matters. Your input helps shape decisions and insights. Quick, easy, and anonymous—every vote counts!
+Vibe Poll Vote is an easy-to-use tool for creating, managing, and sharing polls. Gather instant feedback, opinions, or votes from teams or audiences with real-time results and customizable options—perfect for meetings, events, and decision-making.
